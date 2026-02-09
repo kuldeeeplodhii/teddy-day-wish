@@ -1,171 +1,295 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Teddy Day ❤️</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For My Cuddly Bear</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700&display=swap');
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap');
+    :root {
+      --bg-color: #ffe6e6;
+      --bear-color: #d89f68;
+      --bear-dark: #b8804c;
+      --snout: #f5dcb8;
+      --blush: #ffb7b2;
+      --heart: #ff4d6d;
+    }
 
-* {
-  box-sizing: border-box;
-}
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: radial-gradient(circle at center, #fff0f0, #ffcfcf);
+      font-family: 'Nunito', sans-serif;
+      overflow: hidden;
+    }
 
-body {
-  margin: 0;
-  height: 100vh;
-  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: 'Poppins', sans-serif;
-  overflow: hidden;
-}
+    /* Container for the card */
+    .card {
+      position: relative;
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(10px);
+      padding: 40px;
+      border-radius: 30px;
+      box-shadow: 0 10px 30px rgba(255, 100, 100, 0.2);
+      text-align: center;
+      max-width: 90%;
+      width: 350px;
+      z-index: 10;
+      transition: all 0.5s ease;
+    }
 
-.card {
-  background: rgba(255,255,255,0.9);
-  border-radius: 25px;
-  padding: 30px;
-  text-align: center;
-  width: 90%;
-  max-width: 360px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-  animation: fadeIn 1.2s ease;
-}
+    /* --- CSS ART: THE TEDDY BEAR --- */
+    .bear-container {
+      position: relative;
+      width: 180px;
+      height: 160px;
+      margin: 0 auto 20px;
+    }
 
-h1 {
-  font-family: 'Pacifico', cursive;
-  color: #ff4d6d;
-  margin-bottom: 10px;
-}
+    .bear-head {
+      position: absolute;
+      width: 140px;
+      height: 120px;
+      background-color: var(--bear-color);
+      border-radius: 50% 50% 45% 45%;
+      left: 20px;
+      top: 20px;
+      z-index: 2;
+      box-shadow: inset -5px -5px 0 rgba(0,0,0,0.05);
+      animation: bob 3s ease-in-out infinite;
+    }
 
-p {
-  color: #444;
-  font-size: 15px;
-}
+    .ear {
+      position: absolute;
+      width: 45px;
+      height: 45px;
+      background-color: var(--bear-color);
+      border-radius: 50%;
+      top: 10px;
+      z-index: 1;
+    }
 
-.teddy {
-  width: 220px;
-  margin: 20px auto;
-  cursor: pointer;
-  animation: float 3s ease-in-out infinite;
-}
+    .ear.left { left: 15px; }
+    .ear.right { right: 15px; }
 
-.teddy img {
-  width: 100%;
-  border-radius: 20px;
-}
+    .ear-inner {
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      background-color: var(--bear-dark);
+      border-radius: 50%;
+      top: 10px;
+      left: 10px;
+    }
 
-#message {
-  margin-top: 15px;
-  font-size: 16px;
-  color: #333;
-  min-height: 60px;
-}
+    .eye {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background-color: #333;
+      border-radius: 50%;
+      top: 45px;
+      animation: blink 4s infinite;
+    }
 
-button {
-  margin-top: 15px;
-  padding: 10px 18px;
-  border: none;
-  border-radius: 20px;
-  background: #ff4d6d;
-  color: white;
-  font-size: 14px;
-  cursor: pointer;
-  transition: transform 0.2s, background 0.2s;
-}
+    .eye.left { left: 35px; }
+    .eye.right { right: 35px; }
 
-button:hover {
-  background: #e63b5b;
-  transform: scale(1.05);
-}
+    .snout {
+      position: absolute;
+      width: 50px;
+      height: 35px;
+      background-color: var(--snout);
+      border-radius: 50%;
+      top: 55px;
+      left: 45px;
+    }
 
-.heart {
-  position: absolute;
-  color: rgba(255, 77, 109, 0.7);
-  font-size: 20px;
-  animation: fall 6s linear infinite;
-}
+    .nose {
+      position: absolute;
+      width: 15px;
+      height: 10px;
+      background-color: #4a3b2a;
+      border-radius: 50%;
+      top: 8px;
+      left: 17.5px;
+    }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
-}
+    .mouth {
+      position: absolute;
+      width: 20px;
+      height: 10px;
+      border-bottom: 3px solid #4a3b2a;
+      border-radius: 0 0 20px 20px;
+      top: 15px;
+      left: 15px;
+    }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
-}
+    .blush {
+      position: absolute;
+      width: 20px;
+      height: 10px;
+      background-color: var(--blush);
+      border-radius: 50%;
+      top: 60px;
+      opacity: 0.6;
+    }
 
-@keyframes fall {
-  from { transform: translateY(-10vh); }
-  to { transform: translateY(110vh); }
-}
-</style>
+    .blush.left { left: 25px; }
+    .blush.right { right: 25px; }
+
+    /* --- TEXT & BUTTONS --- */
+    h1 {
+      font-family: 'Fredoka One', cursive;
+      color: #d65a5a;
+      font-size: 28px;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 0px white;
+    }
+
+    p {
+      color: #666;
+      font-size: 16px;
+      line-height: 1.5;
+      margin-bottom: 25px;
+      min-height: 50px;
+    }
+
+    .btn {
+      background-color: var(--heart);
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 50px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn:active {
+      transform: scale(0.95);
+    }
+
+    .hidden-message {
+      display: none;
+      font-size: 18px;
+      color: #d65a5a;
+      font-weight: bold;
+    }
+
+    /* --- ANIMATIONS --- */
+    @keyframes bob {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    @keyframes blink {
+      0%, 96%, 100% { transform: scaleY(1); }
+      98% { transform: scaleY(0.1); }
+    }
+
+    /* Falling Hearts */
+    .heart-rain {
+      position: fixed;
+      top: -10vh;
+      color: var(--heart);
+      font-size: 20px;
+      z-index: 1;
+      animation: fall linear forwards;
+    }
+
+    @keyframes fall {
+      to { transform: translateY(110vh) rotate(360deg); }
+    }
+
+  </style>
 </head>
-
 <body>
 
-<div class="card">
-  <h1>Happy Teddy Day 🧸</h1>
-  <p>Tap the teddy… he has something to say 💕</p>
+  <div class="card">
+    <div class="bear-container">
+      <div class="ear left"><div class="ear-inner"></div></div>
+      <div class="ear right"><div class="ear-inner"></div></div>
+      <div class="bear-head">
+        <div class="eye left"></div>
+        <div class="eye right"></div>
+        <div class="blush left"></div>
+        <div class="blush right"></div>
+        <div class="snout">
+          <div class="nose"></div>
+          <div class="mouth"></div>
+        </div>
+      </div>
+    </div>
 
-  <div class="teddy" onclick="showLove()">
-    <!-- Replace this image URL with your teddy image -->
-    <img src="https://i.imgur.com/1Q9Z1Zm.png" alt="Teddy">
+    <h1 id="main-title">Hey Beautiful!</h1>
+    <p id="sub-text">I have a little surprise for you...</p>
+    
+    <button class="btn" onclick="celebrate()">Click Me &#128151;</button>
+    
+    <div class="hidden-message" id="final-msg">
+      Happy Teddy Day! <br>
+      You are my favorite cuddle buddy forever!
+    </div>
   </div>
 
-  <div id="message"></div>
+  <script>
+    function celebrate() {
+      const btn = document.querySelector('.btn');
+      const title = document.getElementById('main-title');
+      const subText = document.getElementById('sub-text');
+      const finalMsg = document.getElementById('final-msg');
 
-  <button onclick="toggleMusic()">🎶 Music</button>
-</div>
+      // 1. Hide Button and change text
+      btn.style.display = 'none';
+      title.innerText = "Yayyy!";
+      subText.style.display = 'none';
+      
+      // 2. Show Final Message with a fade in
+      finalMsg.style.display = 'block';
+      finalMsg.style.opacity = '0';
+      let opacity = 0;
+      const fadeIn = setInterval(() => {
+        if (opacity >= 1) clearInterval(fadeIn);
+        finalMsg.style.opacity = opacity;
+        opacity += 0.05;
+      }, 50);
 
-<audio id="bgMusic" loop>
-  <!-- Optional romantic music -->
-  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-</audio>
+      // 3. Create Heart Rain
+      createHearts();
+    }
 
-<script>
-const text = "Happy Teddy Day, my love ❤️\nYou are my comfort, my smile, my favorite person.\nJust like this teddy, I’ll always be here to hug you.\n\n— Yours Forever 💕";
-let index = 0;
-let started = false;
-
-function showLove() {
-  if (started) return;
-  started = true;
-
-  const msg = document.getElementById("message");
-  msg.innerHTML = "";
-
-  const typing = setInterval(() => {
-    msg.innerHTML += text.charAt(index).replace(/\n/g, "<br>");
-    index++;
-    if (index >= text.length) clearInterval(typing);
-  }, 40);
-
-  createHearts();
-}
-
-function createHearts() {
-  setInterval(() => {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerHTML = "❤️";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = (14 + Math.random() * 20) + "px";
-    document.body.appendChild(heart);
-
-    setTimeout(() => heart.remove(), 6000);
-  }, 300);
-}
-
-function toggleMusic() {
-  const music = document.getElementById("bgMusic");
-  if (music.paused) music.play();
-  else music.pause();
-}
-</script>
+    function createHearts() {
+      const heartCount = 50; // Number of hearts
+      for (let i = 0; i < heartCount; i++) {
+        setTimeout(() => {
+          const heart = document.createElement('div');
+          heart.classList.add('heart-rain');
+          heart.innerHTML = '&#10084;'; // Heart emoji
+          
+          // Random positioning
+          heart.style.left = Math.random() * 100 + 'vw';
+          heart.style.animationDuration = Math.random() * 2 + 3 + 's'; // Between 3 and 5s
+          heart.style.fontSize = Math.random() * 20 + 20 + 'px';
+          
+          document.body.appendChild(heart);
+          
+          // Cleanup after animation
+          setTimeout(() => {
+            heart.remove();
+          }, 5000);
+        }, i * 100);
+      }
+    }
+  </script>
 
 </body>
 </html>
